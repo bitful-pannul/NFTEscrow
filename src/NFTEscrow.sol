@@ -1,9 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-interface IERC721 {
-    function transferFrom(address from, address to, uint256 tokenId) external;
-}
+import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 
 contract NFTEscrow {
     struct Sale {
