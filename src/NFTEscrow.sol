@@ -38,7 +38,7 @@ contract NFTEscrow {
 
         // Construct the signed message from sale details, including the price and uid
         bytes32 messageHash = keccak256(
-            abi.encodePacked(nftAddress, tokenId, price, uid)
+            abi.encodePacked(nftAddress, tokenId, price, uid, msg.sender)
         );
         bytes32 ethSignedMessageHash = MessageHashUtils.toEthSignedMessageHash(
             messageHash
