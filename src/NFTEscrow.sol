@@ -50,8 +50,6 @@ contract NFTEscrow {
             signature
         );
 
-        // Verify the recovered address is the seller
-
         // Transfer the NFT to the buyer
         IERC721(nftAddress).transferFrom(recoveredSeller, msg.sender, tokenId);
 
