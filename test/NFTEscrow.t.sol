@@ -48,7 +48,7 @@ contract NFTEscrowTest is Test {
         // Seller signs the sale details
         bytes32 messageHash = keccak256(
             abi.encodePacked(
-                address(nft),
+                nft,
                 uint256(1),
                 uint256(1 ether),
                 uint256(block.timestamp + 1 days),
@@ -64,20 +64,24 @@ contract NFTEscrowTest is Test {
         console.logAddress(seller);
         console.log("Message hash:");
         console.logBytes32(messageHash);
+        console.log("eth hash");
+        console.logBytes32(ethSignedMessageHash);
         (uint8 v, bytes32 r, bytes32 s) = vm.sign(
             privateKey,
             ethSignedMessageHash
         );
+        console.log("v");
+        console.log(v);
         bytes memory signature = abi.encodePacked(r, s, v);
         console.log("Signature:");
         console.logBytes(signature);
         vm.prank(buyer);
         escrow.buyNFT{value: 1 ether}(
             address(nft),
-            1,
-            1 ether,
-            block.timestamp + 1 days,
-            123,
+            uint256(1),
+            uint256(1 ether),
+            uint256(block.timestamp + 1 days),
+            uint256(123),
             signature
         );
 
