@@ -29,16 +29,25 @@ contract NFTEscrow {
         uint256 tokenId,
         uint256 price,
         uint256 uid,
+        uint256 validUntil,
         bytes memory signature
     ) external payable {
         require(msg.value >= price, "Sent value does not meet the sale price.");
+        require(block.timestamp <= validUntil, "Transaction expired");
 
         require(!usedUIDs[uid], "UID has already been used");
         usedUIDs[uid] = true;
 
         // Construct the signed message from sale details, including the price and uid
         bytes32 messageHash = keccak256(
-            abi.encodePacked(nftAddress, tokenId, price, uid, msg.sender)
+            abi.encodePacked(
+                nftAddress,
+                tokenId,
+                price,
+                validUntil,
+                uid,
+                msg.sender
+            )
         );
         bytes32 ethSignedMessageHash = MessageHashUtils.toEthSignedMessageHash(
             messageHash
