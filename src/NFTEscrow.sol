@@ -22,6 +22,7 @@ contract NFTEscrow {
      * @param tokenId The token ID of the NFT being purchased.
      * @param price The agreed sale price of the NFT.
      * @param uid A unique identifier for this specific sale.
+     * @param validUntil Block until the sell order is valid.
      * @param signature The seller's signature over the sale terms, including the price and UID.
      */
     function buyNFT(
@@ -44,8 +45,8 @@ contract NFTEscrow {
                 nftAddress,
                 tokenId,
                 price,
-                validUntil,
                 uid,
+                validUntil,
                 msg.sender
             )
         );

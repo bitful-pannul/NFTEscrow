@@ -51,8 +51,8 @@ contract NFTEscrowTest is Test {
                 nft,
                 uint256(1),
                 uint256(1 ether),
-                uint256(block.timestamp + 1 days),
                 uint256(123),
+                uint256(block.timestamp + 1 days),
                 buyer
             )
         );
@@ -80,8 +80,8 @@ contract NFTEscrowTest is Test {
             address(nft),
             uint256(1),
             uint256(1 ether),
-            uint256(block.timestamp + 1 days),
             uint256(123),
+            uint256(block.timestamp + 1 days),
             signature
         );
 
