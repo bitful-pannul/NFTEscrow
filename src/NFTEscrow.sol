@@ -7,9 +7,10 @@ import "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol";
 
 contract NFTEscrow {
     event NFTPurchased(
-        address indexed nftAddress,
-        uint256 indexed tokenId,
-        address indexed buyer,
+        address indexed seller,
+        address nftAddress,
+        uint256 tokenId,
+        address buyer,
         uint256 price
     );
 
@@ -66,6 +67,12 @@ contract NFTEscrow {
         // Transfer the sale amount to the seller
         payable(recoveredSeller).transfer(msg.value);
 
-        emit NFTPurchased(nftAddress, tokenId, msg.sender, price);
+        emit NFTPurchased(
+            recoveredSeller,
+            nftAddress,
+            tokenId,
+            msg.sender,
+            price
+        );
     }
 }

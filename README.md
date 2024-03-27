@@ -1,5 +1,12 @@
 ## Foundry
 
+## Deployments
+
+NFTEscrow is deployed on the same address on the following chains: 
+0x4A3A2c0A385F017501544DcD9C6Eb3f6C63fc38b
+
+Optimism, Base, Arbitrum, Sepolia.
+
 **Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
 
 Foundry consists of:
